@@ -68,13 +68,17 @@ def snowflake_login():
     return user, cursor, snowflake_connection
 
 def get_credentials(type: str) -> dict:
+    if os.getcwd().upper() == 'C:\\USERS\\ARTURO.BOTATA12\\DOCUMENTS\\GITHUB\\NUEVAS_ACTIVACIONES':
+        path = 'T:/BI/data/Claves/'
+    else:
+        path = ''
 
     if type == 'credentials_mail_servicio':
-        with open('leo_usuario_servicio_credenciales.json') as f:
+        with open(path + 'leo_usuario_servicio_credenciales.json') as f:
             credentials = json.load(f)#[type]
 
     else:
-        with open('credentials.json') as f:
+        with open(path + 'credentials.json') as f:
             credentials = json.load(f)[type]
 
     return credentials
